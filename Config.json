@@ -1,7 +1,7 @@
 {
-  "name": "Grammar Check",
-  "icon": "spell-check.svg",
-  "identifier": "tw.hiraku.popclip.extension.chatgpt-grammar-check",
+  "name": "ChatGPT SuperSet",
+  "icon": "openai-icon.svg",
+  "identifier": "orefalo.popclip.extension.chatgpt-superset",
   "description": "Send the selected text to ChatGPT and append the response. Hold Shift (⇧) to copy just the response.",
   "note": "To use this extension you will need an <a href=\"https://platform.openai.com/account/api-keys\">OpenAPI API key</a>",
   "app": {
@@ -9,10 +9,8 @@
     "link": "https://openai.com/blog/chatgpt"
   },
   "popclipVersion": 4069,
-  "module": "chatgpt-grammar-check.js",
-  "entitlements": [
-    "network"
-  ],
+  "module": "chatgpt-superset.js",
+  "entitlements": ["network"],
   "options": [
     {
       "identifier": "apikey",
