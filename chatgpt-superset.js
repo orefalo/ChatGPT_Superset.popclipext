@@ -90,7 +90,7 @@ async function correctFrench(input, options) {
 async function correctGrammar(input, options) {
   openai.defaults.headers.common.Authorization = `Bearer ${options.apikey}`;
   const content =
-    "Please correct the grammar and polish the following sentences, do not provide any translation, comments, or notes, and use the same language as input:\n\n" +
+    "I want you to act as an English spelling corrector and improver, in which I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning the same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. Correct and improve the following sentence: \n\n" +
     input.text.trim();
   const messages = [{ role: "user", content: content }];
   const { data } = await openai.post("chat/completions", {
