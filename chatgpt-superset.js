@@ -19,28 +19,28 @@ const openai = require("axios").create({
 
 const model = "gpt-4";
 
-async function prompt(input, options) {
-  openai.defaults.headers.common.Authorization = `Bearer ${options.apikey}`;
-  const content = input.text.trim();
-  const messages = [{ role: "user", content: content }];
-  const { data } = await openai.post("chat/completions", {
-    model: model,
-    messages,
-  });
-  const response = data.choices[0].message.content.trim();
-  // if holding shift, copy just the response. else, paste the last input and response.
-  if (popclip.modifiers.shift) {
-    popclip.copyText(response);
-  } else {
-    popclip.pasteText(response);
-  }
-  return null;
-}
+// async function prompt(input, options) {
+//   openai.defaults.headers.common.Authorization = `Bearer ${options.apikey}`;
+//   const content = input.text.trim();
+//   const messages = [{ role: "user", content: content }];
+//   const { data } = await openai.post("chat/completions", {
+//     model: model,
+//     messages,
+//   });
+//   const response = data.choices[0].message.content.trim();
+//   // if holding shift, copy just the response. else, paste the last input and response.
+//   if (popclip.modifiers.shift) {
+//     popclip.copyText(response);
+//   } else {
+//     popclip.pasteText(response);
+//   }
+//   return null;
+// }
 
 async function rewrite(input, options) {
   openai.defaults.headers.common.Authorization = `Bearer ${options.apikey}`;
   const content =
-    "Rewrite this using an academic tone: \n\n" + input.text.trim();
+    "I want you to act as an English spelling corrector. I want you to only reply the correction, the improvements and nothing else, do not write explanations. Correct the following sentence: \n\n" + input.text.trim();
   const messages = [{ role: "user", content: content }];
   const { data } = await openai.post("chat/completions", {
     model: model,
@@ -109,26 +109,26 @@ async function correctGrammar(input, options) {
 }
 
 exports.actions = [
+  // {
+  //   title: "Execute the selected prompt",
+  //   // after: "paste-result",
+  //   code: prompt,
+  //   icon: "./prompt.svg",
+  // },
   {
-    title: "Execute the selected prompt",
-    // after: "paste-result",
-    code: prompt,
-    icon: "./prompt.svg",
-  },
-  {
-    title: "Check Grammar",
+    title: "Improve the text",
     //after: "copy-result",
     code: correctGrammar,
     icon: "./spell-check.svg",
   },
   {
-    title: "Rewrite using an academic tone",
+    title: "Correct the text",
     after: "copy-result",
     code: rewrite,
     icon: "symbol:pencil.and.outline",
   },
   {
-    title: "Summarize the selected text",
+    title: "Summarize the text",
     after: "preview-result",
     code: summarize,
     icon: "symbol:arrow.down.right.and.arrow.up.left",
