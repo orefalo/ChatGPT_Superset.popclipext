@@ -91,7 +91,7 @@ async function correctFrench(input, options) {
 async function improveText(input, options) {
   openai.defaults.headers.common.Authorization = `Bearer ${options.apikey}`;
   const content =
-    "I want you to act as an English spelling corrector and improver. Keep the meaning the same, but make them more business friendly, avoid complex words and verbs. I want you to only reply the correction, the improvements and nothing else, do not write explanations. Correct and improve the following sentence: \n\n" +
+    "I want you to act as an English spelling corrector and improver. Keep the meaning the same, but make them more business friendly, avoid complex words and verbs, use BBC english. I want you to only reply the correction, the improvements and nothing else, do not write explanations. Correct and improve the following sentence: \n\n" +
     input.text.trim();
   const messages = [{ role: "user", content: content }];
   const { data } = await openai.post("chat/completions", {
@@ -120,13 +120,13 @@ exports.actions = [
     title: "Improve the text",
     //after: "copy-result",
     code: improveText,
-    icon: "./spell-check.svg",
+    icon: "symbol:pencil.and.outline",
   },
   {
     title: "Correct the text",
     after: "copy-result",
     code: rewrite,
-    icon: "symbol:pencil.and.outline",
+    icon: "./spell-check.svg",
   },
   {
     title: "Summarize the text",
