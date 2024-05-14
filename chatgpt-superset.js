@@ -17,7 +17,7 @@ const openai = require("axios").create({
   baseURL: "https://api.openai.com/v1/",
 });
 
-const model = "gpt-4";
+const model = "gpt-4o";
 
 // async function prompt(input, options) {
 //   openai.defaults.headers.common.Authorization = `Bearer ${options.apikey}`;
