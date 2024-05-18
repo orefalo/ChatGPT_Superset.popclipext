@@ -72,7 +72,9 @@ async function summarize(input, options) {
 
 async function correctFrench(input, options) {
   openai.defaults.headers.common.Authorization = `Bearer ${options.apikey}`;
-  const content = "Corrige mon Francais: \n\n" + input.text.trim();
+  const content =
+    "Corrige mon Francais, je veux simplement une reponse, ne rajoute rien: \n\n" +
+    input.text.trim();
   const messages = [{ role: "user", content: content }];
   const { data } = await openai.post("chat/completions", {
     model: model,
