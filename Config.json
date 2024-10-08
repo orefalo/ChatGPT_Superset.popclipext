@@ -1,6 +1,6 @@
 {
   "name": "ChatGPT SuperSet",
-  "icon": "openai-icon.svg",
+  "icon": "iconify:logos:openai-icon",
   "identifier": "orefalo.popclip.extension.chatgpt-superset",
   "description": "Send the selected text to ChatGPT and append the response. Hold Shift (⇧) to copy just the response.",
   "note": "To use this extension you will need an <a href=\"https://platform.openai.com/account/api-keys\">OpenAPI API key</a>",
@@ -17,6 +17,28 @@
       "label": "API Key",
       "type": "string",
       "description": "Obtain an API key from: https://platform.openai.com/account/api-keys"
+    },
+    {
+      "identifier": "tone",
+      "label": "Answer tone",
+      "type": "multiple",
+      "defaultValue": "professional",
+      "values": ["concise", "professional", "friendly"],
+      "description": "Default tone used for drafting responses"
+    },
+    {
+      "identifier": "model",
+      "label": "AI model",
+      "type": "multiple",
+      "defaultValue": "gpt-4o",
+      "values": [
+        "gpt-4o",
+        "gpt-4o-mini",
+        "gpt-4",
+        "gpt-4-turbo",
+        "gpt-3.5-turbo"
+      ],
+      "description": "The OpenAI model to use"
     }
   ]
 }
