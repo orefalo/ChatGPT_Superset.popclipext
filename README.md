@@ -1,8 +1,8 @@
 # ChatGPT_Superset.popclipext
 
-![screenshot1](/Users/orefalo/GitRepositories/Private/ChatGPT_Superset.popclipext/screenshot1.png)
+![screenshot1](screenshot1.png)
 
-![screenshot2](/Users/orefalo/GitRepositories/Private/ChatGPT_Superset.popclipext/screenshot2.png)
+![screenshot2](screenshot2.png)
 
 This is my custom CharGPT extension for PopClip. Easy to modify; simply edit the code and JavaScript file.
 
