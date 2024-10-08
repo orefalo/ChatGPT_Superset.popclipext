@@ -32,7 +32,6 @@ async function spellingAndGrammar(input, options) {
     input.text.trim();
 
   const data = await callOpenAPI(prompt, options);
-
   prepareResponse(data);
 }
 
@@ -60,7 +59,7 @@ async function makeLonger(input, options) {
     input.text.trim();
 
   const data = await callOpenAPI(prompt, options);
-  return data.choices[0].message.content.trim();
+  prepareResponse(data);
 }
 
 async function makeShorter(input, options) {
@@ -69,12 +68,14 @@ async function makeShorter(input, options) {
     input.text.trim();
 
   const data = await callOpenAPI(prompt, options);
-  return data.choices[0].message.content.trim();
+  prepareResponse(data);
 }
 
-async function correctFrench(input, options) {
+async function translate(input, options) {
   const prompt =
-    "Corrige mon Francais, je veux simplement une reponse, ne rajoute rien: \n\n" +
+    "I will give you text content, you will translate the text into " +
+    options.tolang
+    +" language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else: \n\n" +
     input.text.trim();
 
   const data = await callOpenAPI(prompt, options);
@@ -117,14 +118,13 @@ exports.actions = [
   },
   {
     title: "Summarize the text",
-    after: "preview-result",
+    after: "show-result",
     code: summarize,
     icon: "symbol:arrow.down.right.and.arrow.up.left",
   },
   {
-    title: "Corrige mon Français",
-    //after: "copy-result",
-    code: correctFrench,
-    icon: "./FRA.svg",
+    title: "Translate",
+    code: translate,
+    icon: "iconify:bi:translate",
   },
 ];

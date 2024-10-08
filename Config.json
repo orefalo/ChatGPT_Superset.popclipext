@@ -39,6 +39,21 @@
         "gpt-3.5-turbo"
       ],
       "description": "The OpenAI model to use"
+    },
+    {
+      "identifier": "tolang",
+      "label": "Language",
+      "type": "multiple",
+      "values": [
+        "English",
+        "Chinese",
+        "Russian",
+        "French",
+        "Português",
+        "Spanish"
+      ],
+      "defaultValue": "French",
+      "description": "The target translation language"
     }
   ]
 }
