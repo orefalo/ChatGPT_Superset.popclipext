@@ -26,9 +26,11 @@ async function callOpenAPI(prompt, options) {
   return data;
 }
 
-async function spellingAndGrammar(input, options) {
+async function improveWritting(input, options) {
   const prompt =
-    "I want you to act as an English spelling corrector, only reply the correction, the improvements and nothing else, do not write explanations. improve the following sentence using BBC english: \n\n" +
+    "I want you to act as an English spelling corrector and improver. Keep the meaning the same, use a " +
+    options.tone +
+    " tone, avoid complex words and verbs. I want you to only reply the correction, the improvements and nothing else, do not write explanations. Correct and improve the following sentence: \n\n" +
     input.text.trim();
 
   const data = await callOpenAPI(prompt, options);
@@ -37,7 +39,9 @@ async function spellingAndGrammar(input, options) {
 
 async function spellingAndGrammar(input, options) {
   const prompt =
-    "I want you to act as an English spelling corrector, only reply the correction, the improvements and nothing else, do not write explanations. improve the following sentence using BBC english: \n\n" +
+    "I want you to act as an English spelling corrector, only reply the correction, the improvements and nothing else, do not write explanations. improve the following sentence using a " +
+    options.tone +
+    " tone: \n\n" +
     input.text.trim();
 
   const data = await callOpenAPI(prompt, options);
@@ -74,23 +78,11 @@ async function makeShorter(input, options) {
 async function translate(input, options) {
   const prompt =
     "I will give you text content, you will translate the text into " +
-    options.tolang
-    +" language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else: \n\n" +
+    options.tolang +
+    " language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else: \n\n" +
     input.text.trim();
 
   const data = await callOpenAPI(prompt, options);
-  prepareResponse(data);
-}
-
-async function improveWritting(input, options) {
-  const prompt =
-    "I want you to act as an English spelling corrector and improver. Keep the meaning the same, use a " +
-    options.tone +
-    " tone, avoid complex words and verbs. I want you to only reply the correction, the improvements and nothing else, do not write explanations. Correct and improve the following sentence: \n\n" +
-    input.text.trim();
-
-  const data = await callOpenAPI(prompt, options);
-
   prepareResponse(data);
 }
 
